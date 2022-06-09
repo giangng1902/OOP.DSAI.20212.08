@@ -1,6 +1,9 @@
 package gem;
 public class BigGem extends Gem {
+	private int point = 5;
 	public BigGem() {
-		this.point = 5;
+	}
+	public int getPoint() {
+		return point;
 	}
 }

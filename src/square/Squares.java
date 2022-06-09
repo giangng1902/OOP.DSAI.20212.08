@@ -1,29 +1,29 @@
 package square;
 import java.util.*;
-
-import gem.Gem;
 import player.Player;
-
-public class Squares {
-	private int point = squarePoint();
-	private static int position;
-	public static final int MAX_POINTS = 70;
+import gem.*;
+public abstract class Squares {
+	private int point;
+	private int position;
+	public static final int MAX_POINTS = 60;
 	private List<Gem> square = new ArrayList<Gem>();
 	
-	public static void setPosition(int position) {
-		Squares.position = position;
+	public Squares(int position) {
+		this.position = position;
 	}
+	
+	public int getPosition() {
+		return position%12;
+	}
+
 	public int getPoint() {
-		return point;
-	}
-	public int squarePoint() {
 		int sum = 0;
 		for (Gem gem : square) {
-			sum += gem.point;
+			sum += gem.getPoint();
 		}
 		return sum;
 	}
-	
+	/*
 	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
 		if (Player.range.contains(Squares.position)) {
 			if (point > 0) {
@@ -32,5 +32,13 @@ public class Squares {
 		}
 		return false;
 	}
-	
+	*/
+	public void addGem(Gem gem) {
+		square.add(gem);
+	}
+	/*
+	public void removeGem() {
+		square.remove(0);
+	}
+	*/
 }

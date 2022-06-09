@@ -1,7 +1,10 @@
 package gem;
 
 public class SmallGem extends Gem{
+	private int point = 1;
 	public SmallGem() {
-		this.point = 1;
+	}
+	public int getPoint() {
+		return point;
 	}
 }
