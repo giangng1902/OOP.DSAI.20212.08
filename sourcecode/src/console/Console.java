@@ -1,11 +1,11 @@
-package main;
+package console;
 
 import java.util.*;
 
 import gem.*;
 import square.*;
 
-public class Main {
+public class Console {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -52,7 +52,7 @@ public class Main {
 			normalSquare10.addGem(smallGem);
 			normalSquare11.addGem(smallGem);
 		}
-		// System.out.println(halfCircle1.getPoint());
+		System.out.println(halfCircle0.getPoint());
 
 	}
 	public boolean stopGame(List<Squares> board) {
