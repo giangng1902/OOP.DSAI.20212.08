@@ -13,7 +13,11 @@ public abstract class Squares {
 	}
 	
 	public int getPosition() {
-		return position%12;
+		if (position >= 0) {
+			return position%12;
+		}else {
+			return (position + 12)%12;
+		}
 	}
 
 	public int getPoint() {
@@ -36,9 +40,7 @@ public abstract class Squares {
 	public void addGem(Gem gem) {
 		square.add(gem);
 	}
-	/*
 	public void removeGem() {
-		square.remove(0);
+		
 	}
-	*/
 }

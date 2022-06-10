@@ -1,16 +1,22 @@
 package player;
 import java.util.*;
 
+import board.Board;
+import gem.SmallGem;
 import square.NormalSquare;
 import square.Squares;
 
 public class Player {
-	protected int point;
-	private String name;
+	public int point;
+	public String name;
 	private int direction; // 1: counterclockwise, -1: clockwise
 	public static List<Integer> range = new ArrayList<Integer>();
 	public int pointInHand = 0;
 	
+	public Player() {
+		this.point = 0;
+		this.pointInHand = 0;
+	}
 	public int getDirection() {
 		return this.direction;
 	}
@@ -18,21 +24,32 @@ public class Player {
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-	public boolean stopTurn(List<Squares> board, Squares curSquare, int direction) {
+	public boolean stopTurn(Board board, Squares curSquare, int direction) {
 		int curPosition = curSquare.getPosition();
 		int nextPosition = curPosition + direction;
-		if (pointInHand == 0 && board.get(nextPosition).getPoint() == 0) {
+		if (pointInHand == 0 && board.getPointAtSquare(nextPosition) == 0) {
 			return true;
 		}
 		return false;
 	}
-	/*
-	public void turn(NormalSquare normalSquare, int direction) {
-		pointInHand = normalSquare.getPoint();
-		int currentPosition = normalSquare.getPosition(); 
-		if (direction == 1) {  // counter clockwise
-			while 
+	
+	public void aPhase(Board board, int position, int direction) {
+		SmallGem gem = new SmallGem();
+		pointInHand = board.getPointAtSquare(position);
+		board.getSquare(position).removeGem();
+		int curPosition = position;
+		while (pointInHand != 0) {
+			curPosition += direction;
+			board.getSquare(curPosition).addGem(gem);
+			pointInHand -= 1;
 		}
 	}
-	*/
+	public void turn(Board board, int position, int direction) {
+		pointInHand = board.getPointAtSquare(position);
+		int curPosition = position;
+		int nextPosition = curPosition + direction;
+		while (board.getPointAtSquare(nextPosition ) != 0 || pointInHand != 0) {
+			
+		}
+	}
 }
