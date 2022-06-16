@@ -35,16 +35,15 @@ public class Console {
 		}
 	}
 	*/
-	public static boolean stopTurn(Squares curSquare, int direction) {
-		int curPosition = curSquare.getPosition();
+	public static boolean stopTurn(Board board,Player playingPlayer, int curPosition , int direction) { // done
 		int nextPosition = curPosition + direction;
 		if (playingPlayer.pointInHand == 0 && board.getSquare(nextPosition).getPoint() == 0) {
 			return true;
 		}
 		return false;
 	}
-	public static boolean stopGame(List<Squares> board) {
-		if (board.get(0).getPoint() == 0 && board.get(6).getPoint() == 0) {
+	public static boolean stopGame(Board board) {
+		if (board.getSquare(0).getPoint() == 0 && board.getSquare(6).getPoint() == 0) {
 			return true;
 		}
 		return false;
@@ -72,6 +71,8 @@ public class Console {
 		aPhase(board, player1,3, 1);
 		
 		board.print();
+		System.out.println(stopTurn(board, player1,2,1));
+		System.out.println(stopGame(board));
 	}
 	
 }
