@@ -9,7 +9,7 @@ public class Console {
 	public static Player playingPlayer;
 	public static Board board;
 	
-	public static void aPhase(Board board,Player playingPlayer, int position, int direction) {
+	public static void aPhase(Board board,Player playingPlayer, int position, int direction) { //done
 		SmallGem gem = new SmallGem();
 		playingPlayer.pointInHand = board.getSquare(position).getPoint();
 		board.getSquare(position).removeGem();
@@ -23,16 +23,7 @@ public class Console {
 
 	}
 	/*
-	public static Board aPhase(Board board, int position, int direction, SmallGem gem) {
-		int curPosition = position;
-		board.getSquare(position).removeGem(gem);
-		while (board.getSquare(position).getPoint() != 0) {
-			curPosition += direction;
-			board.getSquare(curPosition).addGem(gem);
-			board.getSquare(position).removeGem(gem);
-		}
-		return board;
-	}
+
 	
 	public static void turn(Board board,Player playingPlayer, int position, int direction) {
 		playingPlayer.pointInHand = board.getSquare(position).getPoint();
@@ -43,7 +34,7 @@ public class Console {
 			
 		}
 	}
-	
+	*/
 	public static boolean stopTurn(Squares curSquare, int direction) {
 		int curPosition = curSquare.getPosition();
 		int nextPosition = curPosition + direction;
@@ -52,7 +43,6 @@ public class Console {
 		}
 		return false;
 	}
-	*/
 	public static boolean stopGame(List<Squares> board) {
 		if (board.get(0).getPoint() == 0 && board.get(6).getPoint() == 0) {
 			return true;
@@ -79,7 +69,8 @@ public class Console {
 		// TODO Auto-generated method stub
 		Board board = new Board();
 		Player player1 = new Player("aa");
-		aPhase(board, player1,3,1);
+		aPhase(board, player1,3, 1);
+		
 		board.print();
 	}
 	

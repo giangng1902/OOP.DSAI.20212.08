@@ -1,9 +1,13 @@
 package square;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gem.Gem;
+
 public class HalfCircle extends Squares{
-	public int getPoint() {
-		return 5;
-	}
+	private List<Gem> halfCircle = new ArrayList<Gem>();
+	
 	public HalfCircle(int position) {
 		super(position);
 	}

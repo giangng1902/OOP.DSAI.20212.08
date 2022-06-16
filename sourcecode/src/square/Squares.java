@@ -20,14 +20,11 @@ public abstract class Squares {
 	}
 
 	public int getPoint() {
-		return square.size();
-	}
-	
-	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
-		if (Player.range.contains(getPosition()) && getPoint() > 0) {
-			return true;
+		int sum =0;
+		for (Gem gem:square) {
+			sum += gem.getPoint();
 		}
-		return false;
+		return sum;
 	}
 	
 	public void addGem(Gem gem) {
@@ -37,5 +34,11 @@ public abstract class Squares {
 		while (square.size() !=0) {
 			square.remove(0);
 		}
+	}
+	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
+		if (Player.range.contains(getPosition()) && getPoint() > 0) {
+			return true;
+		}
+		return false;
 	}
 }
