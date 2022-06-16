@@ -20,11 +20,7 @@ public abstract class Squares {
 	}
 
 	public int getPoint() {
-		int sum = 0;
-		for (Gem gem : square) {
-			sum += gem.getPoint();
-		}
-		return sum;
+		return square.size();
 	}
 	
 	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
@@ -37,9 +33,7 @@ public abstract class Squares {
 	public void addGem(Gem gem) {
 		square.add(gem);
 	}
-	public void removeGem(Gem gem) {
-		if (gem instanceof SmallGem) {
-			square.remove((SmallGem)gem);
-		}
+	public void removeGem() {
+		
 	}
 }

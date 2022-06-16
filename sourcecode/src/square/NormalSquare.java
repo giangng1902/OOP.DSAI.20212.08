@@ -13,8 +13,9 @@ public class NormalSquare extends Squares{
 		super(position);
 	}
 	public void removeGem() {
-		SmallGem gem = new SmallGem();
-		normalSquare.remove(gem);
+		for (Gem gem: normalSquare) {
+			normalSquare.remove(gem);
+		}
 	}
 
 }
