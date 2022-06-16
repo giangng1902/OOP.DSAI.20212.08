@@ -14,7 +14,7 @@ public class SquareTest {
 		square.addGem(gem);
 		square.addGem(gem);
 		square.addGem(gem);
-		square.removeGem();
+		//square.removeGem();
 		System.out.println(square.getPoint());
 	}
 

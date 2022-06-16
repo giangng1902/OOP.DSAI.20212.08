@@ -34,6 +34,8 @@ public abstract class Squares {
 		square.add(gem);
 	}
 	public void removeGem() {
-		
+		while (square.size() !=0) {
+			square.remove(0);
+		}
 	}
 }

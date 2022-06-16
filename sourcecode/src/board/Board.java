@@ -56,7 +56,7 @@ public class Board {
 		}
 		
 	}
-	public NormalSquare getSquare(int position) {
+	public Squares getSquare(int position) {
 		while (position < 0) {
 			position += 12;
 		}
@@ -64,6 +64,24 @@ public class Board {
 			position -= 12;
 		}
 		return board.get(position);
+	}
+	public NormalSquare getNormalSquare(int position) {
+		while (position < 0) {
+			position += 12;
+		}
+		while (position >= 12) {
+			position -= 12;
+		}
+		return (NormalSquare)board.get(position);
+	}	
+	public HalfCircle getHalfCircle(int position) {
+		while (position < 0) {
+			position += 12;
+		}
+		while (position >= 12) {
+			position -= 12;
+		}
+		return (HalfCircle)board.get(position);
 	}	
 	public void print() {
 		for (Squares square: board) {
