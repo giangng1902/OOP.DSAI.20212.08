@@ -56,17 +56,31 @@ public class Board {
 		}
 		
 	}
-	public Squares getSquare(int position) {
+	public static Squares getSquare(int position) {
 		while (position < 0) {
 			position += 12;
 		}
 		while (position >= 12) {
 			position -= 12;
 		}
-		return board.get(position);
+		return getSquare(position);
 	}	
 	public int getPointAtSquare(int position) {
 		return getSquare(position).getPoint();
 	}
-	
+	public void print() {
+		for (Squares square: board) {
+			System.out.println("Square " + board.indexOf(square) + ":" + square.getPoint());
+		}
+	}
+	public static void aPhase(int position, int direction) {
+		SmallGem gem = new SmallGem();
+		int curPosition = position;
+		getSquare(position).removeGem(gem);
+		while (getSquare(position).getPoint() != 0) {
+			curPosition += direction;
+			getSquare(curPosition).addGem(gem);
+			getSquare(position).removeGem(gem);
+		}
+	}
 }

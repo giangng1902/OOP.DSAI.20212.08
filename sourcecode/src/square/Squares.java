@@ -13,11 +13,10 @@ public abstract class Squares {
 	}
 	
 	public int getPosition() {
-		if (position >= 0) {
-			return position%12;
-		}else {
-			return (position + 12)%12;
+		while (position < 0) {
+			position += 12;
 		}
+		return position % 12;
 	}
 
 	public int getPoint() {
@@ -27,20 +26,20 @@ public abstract class Squares {
 		}
 		return sum;
 	}
-	/*
+	
 	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
-		if (Player.range.contains(Squares.position)) {
-			if (point > 0) {
-				return true;
-			}
+		if (Player.range.contains(getPosition()) && getPoint() > 0) {
+			return true;
 		}
 		return false;
 	}
-	*/
+	
 	public void addGem(Gem gem) {
 		square.add(gem);
 	}
-	public void removeGem() {
-		
+	public void removeGem(Gem gem) {
+		if (gem instanceof SmallGem) {
+			square.remove((SmallGem)gem);
+		}
 	}
 }
