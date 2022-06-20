@@ -10,7 +10,7 @@ import square.NormalSquare;
 import square.Squares;
 
 public class Board {
-	private List<Squares> board = new ArrayList<Squares>();
+	private ArrayList<Squares> board = new ArrayList<Squares>();
 	public Board() {
 		HalfCircle halfCircle0 = new HalfCircle(0);
 		HalfCircle halfCircle6 = new HalfCircle(6);

@@ -18,32 +18,79 @@ public class Console {
 			curPosition += direction;
 			board.getSquare(curPosition).addGem(gem);
 			playingPlayer.pointInHand -= 1;
-			
 		}
-
 	}
-	/*
-
 	
-	public static void turn(Board board,Player playingPlayer, int position, int direction) {
-		playingPlayer.pointInHand = board.getSquare(position).getPoint();
-		int curPosition = position;
-		int nextPosition = curPosition + direction;
-		while (board.getSquare(nextPosition ).getPoint() != 0 || playingPlayer.pointInHand != 0) {
-			aPhase(board, playingPlayer,curPosition, direction);
-			
+	public static void turn(Board board,Player playingPlayer, int position, int direction) {		
+		while(true) {
+			if(board.getSquare(position).getPoint() > 0) {
+				playingPlayer.pointInHand = board.getSquare(position).getPoint();
+				int currentPosition = position + direction*board.getSquare(position).getPoint();
+				aPhase(board, playingPlayer,position, direction);
+				int nextPosition = currentPosition  + direction;
+				board.print();
+				//System.out.println("Next Position: " + nextPosition + " " + board.getSquare(nextPosition).getPoint());
+				while(true) { 
+					
+					
+					if(board.getSquare(nextPosition).getPoint() != 0 && (playingPlayer.pointInHand == 0) && !board.getSquare(nextPosition).getClass().getSimpleName().equals("HalfCircle")){							
+							System.out.println("Before: " + nextPosition);
+							aPhase(board, playingPlayer, nextPosition, direction);
+							currentPosition += direction*board.getSquare(nextPosition).getPoint() + direction;		
+							board.print();
+							System.out.println("Current point: " + currentPosition);
+							System.out.println("Point of the chosen square: " + board.getSquare(nextPosition + direction).getPoint());
+							nextPosition += direction*board.getSquare(nextPosition + direction).getPoint();
+							System.out.println("After: " + nextPosition);
+
+					}
+					else if(board.getSquare(nextPosition).getClass().getSimpleName().equals("HalfCircle")){
+						System.out.println("*******");
+						if(board.getSquare(nextPosition).getPoint() != 0) {
+							
+							break;
+							
+						}
+						else {
+							if(board.getSquare(nextPosition + direction ).getPoint() == 0) {								
+								break;
+							}
+							else {							
+								System.out.println("Player 1 won " +  board.getSquare(nextPosition + direction).getPoint() +" gems from square " + board.getSquare(nextPosition + direction).getPosition());
+								board.getSquare(nextPosition + direction).removeGem();
+							}
+						}
+					}
+					else {
+						System.out.println("Player 1 won " +  board.getSquare(nextPosition + direction).getPoint() +" gems from square " + board.getSquare(nextPosition + direction).getPosition());
+						board.getSquare(nextPosition + direction).removeGem();
+						break;
+					}
+		
+				}
+				//System.out.println("***********");
+				board.print();
+				break;
+			}
+			else {
+				System.out.println("The chosen square does not have any gems to disperse.");
+				break;
+			}
 		}
+		System.out.println("End turn");
+		System.out.println("----------\n");
 	}
-	*/
-	public static boolean stopTurn(Board board,Player playingPlayer, int curPosition , int direction) { // done
+	
+	public static boolean stopTurn(Squares curSquare, int direction) {
+		int curPosition = curSquare.getPosition();
 		int nextPosition = curPosition + direction;
 		if (playingPlayer.pointInHand == 0 && board.getSquare(nextPosition).getPoint() == 0) {
 			return true;
 		}
 		return false;
 	}
-	public static boolean stopGame(Board board) {
-		if (board.getSquare(0).getPoint() == 0 && board.getSquare(6).getPoint() == 0) {
+	public static boolean stopGame(List<Squares> board) {
+		if (board.get(0).getPoint() == 0 && board.get(6).getPoint() == 0) {
 			return true;
 		}
 		return false;
@@ -64,15 +111,19 @@ public class Console {
 			System.out.println("Draw");
 		}
 	}
+	
+	public static void wonPoint(int position) {
+		
+	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Board board = new Board();
 		Player player1 = new Player("aa");
-		aPhase(board, player1,3, 1);
 		
-		board.print();
-		System.out.println(stopTurn(board, player1,2,1));
-		System.out.println(stopGame(board));
+		turn(board, player1, 4, -1);
+		turn(board, player1, 8, -1);
+		turn(board, player1, 2, 1);
+		turn(board, player1, 7, 1);
+		
 	}
 	
 }

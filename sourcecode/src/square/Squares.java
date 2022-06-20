@@ -6,7 +6,7 @@ public abstract class Squares {
 	private int point;
 	private int position;
 	public static final int MAX_POINTS = 60;
-	private List<Gem> square = new ArrayList<Gem>();
+	private ArrayList<Gem> square = new ArrayList<Gem>();
 	
 	public Squares(int position) {
 		this.position = position;
