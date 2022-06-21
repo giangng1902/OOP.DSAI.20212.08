@@ -7,18 +7,18 @@ import square.NormalSquare;
 import square.Squares;
 
 public class Player {
-	public int point;
+	public int totalPoint;
 	public String name;
 	private int direction; // 1: counterclockwise, -1: clockwise
 	public static List<Integer> range = new ArrayList<Integer>();
 	public int pointInHand = 0;
 	public Player(String name) {
-		this.point = 0;
+		this.totalPoint = 0;
 		this.name = name;
 		this.pointInHand = 0;
 	}
-	public int getPoint() {
-		return point;
+	public int getTotalPoint() {
+		return totalPoint;
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -32,7 +32,12 @@ public class Player {
 	public int getDirection() {
 		return this.direction;
 	}
-
+	public void bonusPoint(int point) {
+		totalPoint += point; 
+	}
+	public void minusPoint(int point) {
+		totalPoint -= point; 
+	}
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}

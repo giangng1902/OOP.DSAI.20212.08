@@ -84,7 +84,9 @@ public class Board {
 		return (HalfCircle)board.get(position);
 	}	
 	public void print() {
+		System.out.println("===================");
 		for (Squares square: board) {
+			
 			System.out.println("Square " + board.indexOf(square) + ":" + square.getPoint());
 		}
 	}

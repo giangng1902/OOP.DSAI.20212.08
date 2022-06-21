@@ -1,6 +1,8 @@
 package console;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import board.Board;
 import gem.*;
 import square.*;
@@ -21,7 +23,7 @@ public class Console {
 		}
 	}
 	
-	public static void turn(Board board,Player playingPlayer, int position, int direction) {		
+	/*public static void turn(Board board,Player playingPlayer, int position, int direction) {		
 		while(true) {
 			if(board.getSquare(position).getPoint() > 0) {
 				playingPlayer.pointInHand = board.getSquare(position).getPoint();
@@ -57,13 +59,13 @@ public class Console {
 							}
 							else {							
 								System.out.println("Player 1 won " +  board.getSquare(nextPosition + direction).getPoint() +" gems from square " + board.getSquare(nextPosition + direction).getPosition());
-								board.getSquare(nextPosition + direction).removeGem();
+								playingPlayer.bonusPoint(board.getSquare(nextPosition + direction).getPoint());
 							}
 						}
 					}
 					else {
 						System.out.println("Player 1 won " +  board.getSquare(nextPosition + direction).getPoint() +" gems from square " + board.getSquare(nextPosition + direction).getPosition());
-						board.getSquare(nextPosition + direction).removeGem();
+						playingPlayer.bonusPoint(board.getSquare(nextPosition + direction).getPoint());
 						break;
 					}
 		
@@ -79,6 +81,41 @@ public class Console {
 		}
 		System.out.println("End turn");
 		System.out.println("----------\n");
+	}*/
+	
+	public static void turn(Board board,Player playingPlayer, int position, int direction) {
+		while(true) {
+			if(board.getSquare(position).getPoint() > 0) {
+				int curPosition = position;
+				int phasePoint = board.getSquare(position).getPoint();	
+				aPhase(board, playingPlayer, position, direction);
+				curPosition = position + direction*phasePoint;
+				while(true) {
+					if(board.getSquare(curPosition + direction).getPoint() != 0 && !board.getSquare(curPosition + direction).getClass().getSimpleName().equals("HalfCircle")) {
+						System.out.println();
+						int nextPosition = curPosition + direction;
+						phasePoint = board.getSquare(nextPosition).getPoint();
+						aPhase(board, playingPlayer, nextPosition, direction);
+						curPosition = nextPosition + direction*phasePoint;
+					}
+					else if (board.getSquare(curPosition + direction).getPoint() == 0 && board.getSquare(curPosition + 2*direction).getPoint() != 0 ) {
+						System.out.println("Player " + playingPlayer.getName() + " won " + board.getSquare(curPosition + 2*direction).getPoint() + " gems");
+						playingPlayer.bonusPoint(board.getSquare(curPosition + 2*direction).getPoint());
+						board.getSquare(curPosition + 2*direction).removeGem();
+						break;
+					}
+					else if(board.getSquare(curPosition + direction).getClass().getSimpleName().equals("HalfCircle")) {
+						System.out.println("Stop because the next square is the half circle");
+						break;
+					}
+				}
+				break;
+			}
+			else {
+				System.out.println("The chosen square does not have any gems to disperse");
+				break;
+			}
+		}
 	}
 	
 	public static boolean stopTurn(Squares curSquare, int direction) {
@@ -103,27 +140,61 @@ public class Console {
 		}
 	}
 	public static void gameResult(Player player1, Player player2) {
-		if (player1.getPoint() > player2.getPoint()) {
+		if (player1.getTotalPoint() > player2.getTotalPoint()) {
 			System.out.println(player1.infor() + " wins");
-		} else if (player1.getPoint() < player2.getPoint()) {
+		} else if (player1.getTotalPoint() < player2.getTotalPoint()) {
 			System.out.println(player2.infor() + " wins");
 		} else {
 			System.out.println("Draw");
 		}
 	}
 	
-	public static void wonPoint(int position) {
-		
+	public void checkReFill(Player playingPlayer) {
+		SmallGem gem = new SmallGem();
+
+		if (playingPlayer.equals("player1")) {
+			int i = 0;
+			boolean refill = true;
+			while(i < 5) {
+				if (board.getSquare(i).getPoint() == 0) {
+					refill = false;
+				}
+				i++;
+			}
+			if(refill == true) {
+				for(int j = 0; j < 5; j++) {
+					board.getSquare(j).addGem(gem);	
+				}
+				if (playingPlayer.getTotalPoint() >=5 ) {
+					playingPlayer.minusPoint(5);
+				}
+				else {
+					System.out.println("Player 1 borrow 5 gems from player 2");
+
+				}
+			}
+		}
 	}
+		
 	public static void main(String[] args) {
 		Board board = new Board();
-		Player player1 = new Player("aa");
+		Player player1 = new Player("player 1");
 		
 		turn(board, player1, 4, -1);
+		board.print();
 		turn(board, player1, 8, -1);
+		board.print();
 		turn(board, player1, 2, 1);
+		board.print();
 		turn(board, player1, 7, 1);
-		
+		board.print();
+		turn(board, player1, 2, -1);
+		board.print();
+		turn(board, player1, 11, -1);
+		board.print();
+		turn(board, player1, 5, 1);
+		board.print();
+		System.out.println(player1.getTotalPoint());
 	}
 	
 }
