@@ -1,12 +1,10 @@
 package console;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import board.Board;
 import gem.*;
 import square.*;
-import player.Player;
+import player.*;
 public class Console {
 	public static Player playingPlayer;
 	public static Board board;
@@ -23,65 +21,7 @@ public class Console {
 		}
 	}
 	
-	/*public static void turn(Board board,Player playingPlayer, int position, int direction) {		
-		while(true) {
-			if(board.getSquare(position).getPoint() > 0) {
-				playingPlayer.pointInHand = board.getSquare(position).getPoint();
-				int currentPosition = position + direction*board.getSquare(position).getPoint();
-				aPhase(board, playingPlayer,position, direction);
-				int nextPosition = currentPosition  + direction;
-				board.print();
-				//System.out.println("Next Position: " + nextPosition + " " + board.getSquare(nextPosition).getPoint());
-				while(true) { 
-					
-					
-					if(board.getSquare(nextPosition).getPoint() != 0 && (playingPlayer.pointInHand == 0) && !board.getSquare(nextPosition).getClass().getSimpleName().equals("HalfCircle")){							
-							System.out.println("Before: " + nextPosition);
-							aPhase(board, playingPlayer, nextPosition, direction);
-							currentPosition += direction*board.getSquare(nextPosition).getPoint() + direction;		
-							board.print();
-							System.out.println("Current point: " + currentPosition);
-							System.out.println("Point of the chosen square: " + board.getSquare(nextPosition + direction).getPoint());
-							nextPosition += direction*board.getSquare(nextPosition + direction).getPoint();
-							System.out.println("After: " + nextPosition);
 
-					}
-					else if(board.getSquare(nextPosition).getClass().getSimpleName().equals("HalfCircle")){
-						System.out.println("*******");
-						if(board.getSquare(nextPosition).getPoint() != 0) {
-							
-							break;
-							
-						}
-						else {
-							if(board.getSquare(nextPosition + direction ).getPoint() == 0) {								
-								break;
-							}
-							else {							
-								System.out.println("Player 1 won " +  board.getSquare(nextPosition + direction).getPoint() +" gems from square " + board.getSquare(nextPosition + direction).getPosition());
-								playingPlayer.bonusPoint(board.getSquare(nextPosition + direction).getPoint());
-							}
-						}
-					}
-					else {
-						System.out.println("Player 1 won " +  board.getSquare(nextPosition + direction).getPoint() +" gems from square " + board.getSquare(nextPosition + direction).getPosition());
-						playingPlayer.bonusPoint(board.getSquare(nextPosition + direction).getPoint());
-						break;
-					}
-		
-				}
-				//System.out.println("***********");
-				board.print();
-				break;
-			}
-			else {
-				System.out.println("The chosen square does not have any gems to disperse.");
-				break;
-			}
-		}
-		System.out.println("End turn");
-		System.out.println("----------\n");
-	}*/
 	
 	public static void turn(Board board,Player playingPlayer, int position, int direction) {
 		while(true) {
@@ -178,7 +118,7 @@ public class Console {
 		
 	public static void main(String[] args) {
 		Board board = new Board();
-		Player player1 = new Player("player 1");
+		Player1 player1 = new Player1("player 1");
 		
 		turn(board, player1, 4, -1);
 		board.print();

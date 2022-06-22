@@ -1,4 +1,6 @@
-package player;
+package test;
+
+import player.Player;
 
 public class PlayerTest {
 
