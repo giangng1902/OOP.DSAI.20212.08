@@ -9,4 +9,7 @@ public class Player2 extends Player {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
+	public List<Integer> getRange() {
+		return range;
+	}
 }

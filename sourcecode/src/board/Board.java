@@ -65,6 +65,7 @@ public class Board {
 		}
 		return board.get(position);
 	}
+	/*
 	public NormalSquare getNormalSquare(int position) {
 		while (position < 0) {
 			position += 12;
@@ -83,6 +84,7 @@ public class Board {
 		}
 		return (HalfCircle)board.get(position);
 	}	
+	*/
 	public void print() {
 		System.out.println("===================");
 		for (Squares square: board) {

@@ -10,8 +10,9 @@ public class Player {
 	public int totalPoint;
 	public String name;
 	private int direction; // 1: counterclockwise, -1: clockwise
-	public static List<Integer> range = new ArrayList<Integer>();
+	private static List<Integer> range = new ArrayList<Integer>();
 	public int pointInHand = 0;
+	
 	public Player(String name) {
 		this.totalPoint = 0;
 		this.name = name;
@@ -23,7 +24,7 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	public static List<Integer> getRange() {
+	public List<Integer> getRange() {
 		return range;
 	}
 	public int getDirection() {
