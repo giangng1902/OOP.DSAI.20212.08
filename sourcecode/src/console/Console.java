@@ -1,5 +1,4 @@
 package console;
-import java.util.List;
 import java.util.Scanner;
 
 import board.Board;
@@ -7,8 +6,9 @@ import gem.*;
 import square.*;
 import player.*;
 public class Console {
-	public static Player playingPlayer;
-	public static Board board;
+	static Player playingPlayer;
+	static Board board;
+	//static Scanner keyboard = new Scanner(System.in);
 	
 	public static void aPhase(Board board,Player playingPlayer, int position, int direction) { //done // một lần rải sải
 		SmallGem gem = new SmallGem();
@@ -30,30 +30,54 @@ public class Console {
 		} else if (playingPlayer instanceof Player2) {
 			playingPlayer = (Player2) playingPlayer;
 		}
+		
 		while(true) {
 			if(board.getSquare(position).getPoint() > 0) {
+				int takenPoint = 0;
 				int curPosition = position;
-				int phasePoint = board.getSquare(position).getPoint();	
+				int phasePoint = board.getSquare(position).getPoint();	 // number of gems in chosen square
 				aPhase(board, playingPlayer, position, direction);
 				curPosition = position + direction*phasePoint;
 				while(true) {
 					if(board.getSquare(curPosition + direction).getPoint() != 0 && !board.getSquare(curPosition + direction).getClass().getSimpleName().equals("HalfCircle")) {
+						// Ô tiếp theo != HalfCircle và số sỏi != 0 => tiếp tục vòng lặp
 						System.out.println();
 						int nextPosition = curPosition + direction;
 						phasePoint = board.getSquare(nextPosition).getPoint();
 						aPhase(board, playingPlayer, nextPosition, direction);
 						curPosition = nextPosition + direction*phasePoint;
 					}
+					
+					else if(board.getSquare(curPosition + direction).getClass().getSimpleName().equals("HalfCircle")) {
+						// Ô tiếp theo = HalfCircle và số sỏi != 0 => dừng vòng lặp
+						System.out.println("Stop because the next square is the half circle");
+						break;
+					}
+					/*
 					else if (board.getSquare(curPosition + direction).getPoint() == 0 && board.getSquare(curPosition + 2*direction).getPoint() != 0 ) {
+					
+						// Ô tiếp theo số sỏi = 0 và ô tiếp theo nữa != 0 => ăn điểm và dừng turn
+						
 						System.out.println("Player " + playingPlayer.getName() + " take " + board.getSquare(curPosition + 2*direction).getPoint() + " gems");
 						playingPlayer.bonusPoint(board.getSquare(curPosition + 2*direction).getPoint());
 						board.getSquare(curPosition + 2*direction).removeGem();
 						break;
 					}
-					else if(board.getSquare(curPosition + direction).getClass().getSimpleName().equals("HalfCircle")) {
-						System.out.println("Stop because the next square is the half circle");
+					
+					*/
+					
+					else if (board.getSquare(curPosition + direction).getPoint() == 0 && board.getSquare(curPosition + 2*direction).getPoint() != 0 ) {
+						// ăn điểm
+						while (board.getSquare(curPosition + direction).getPoint() == 0 && board.getSquare(curPosition + 2*direction).getPoint() != 0 && !board.getSquare(curPosition + direction).getClass().getSimpleName().equals("HalfCircle")) {
+							System.out.println("Player " + playingPlayer.getName() + " take " + board.getSquare(curPosition + 2*direction).getPoint() + " gems");
+							playingPlayer.bonusPoint(board.getSquare(curPosition + 2*direction).getPoint());
+							board.getSquare(curPosition + 2*direction).removeGem();
+							curPosition += 2*direction;
+						}
+						
 						break;
 					}
+					
 				}
 				break;
 			}
@@ -73,7 +97,7 @@ public class Console {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Please choose a square in " + playingPlayer.getRange());
 		int chosenSquare = keyboard.nextInt();
-		while (playingPlayer.getRange().contains(chosenSquare) == false) {
+		while (playingPlayer.getRange().contains(chosenSquare) == false || board.getSquare(chosenSquare).getPoint() == 0) {
 			System.out.println("Please choose a square in " + playingPlayer.getRange());
 			chosenSquare = keyboard.nextInt();
 		}
@@ -88,6 +112,7 @@ public class Console {
 			System.out.println("-1: clockwise");
 			chosenDirection = keyboard.nextInt();
 		}
+		
 		turn(board, playingPlayer, chosenSquare, chosenDirection);
 	}
 	public static boolean stopTurn(Squares curSquare, int direction) { // kiểm tra điều kiện dừng lại một lượt chơi
@@ -150,7 +175,7 @@ public class Console {
 	}
 	*/
 	
-	public static boolean checkNeedRefill(Player playingPlayer) { // kiểm tra điều kiện bổ sung sỏi của người đnag thực hiện lượt chơi
+	public static boolean checkNeedRefill(Board board, Player playingPlayer) { // kiểm tra điều kiện bổ sung sỏi của người đnag thực hiện lượt chơi
 		int sum = 0;
 		
 		if (playingPlayer instanceof Player1) {
@@ -158,14 +183,15 @@ public class Console {
 		} else if (playingPlayer instanceof Player2) {
 			playingPlayer = (Player2) playingPlayer;
 		}
+		
 		for (int i:playingPlayer.getRange()) {
 			sum += board.getSquare(i).getPoint();
 		}
-		if (sum == 0) {
-			return true;
+		if (sum != 0) {
+			return false;
 		}
-		
-		return false;
+		System.out.println(playingPlayer.infor() + " need to refill your square!");
+		return true;
 	}
 	public static void refillGems(Board board, Player playingPlayer) {
 		SmallGem gem = new SmallGem();
@@ -205,11 +231,15 @@ public class Console {
 		
 		// bat dau tro choi
 		while (stopGame(board) == false) {
-			if (checkNeedRefill(playingPlayer)) {
+			
+			if (checkNeedRefill(board, playingPlayer) == true) {
 				refillGems(board, playingPlayer);
 			}
+			
 			aTurn(board, playingPlayer);
 			board.print();
+			System.out.println("Player " + player1.infor() + " has " + player1.getTotalPoint() + " gems");
+			System.out.println("Player " + player2.infor() + " has " + player2.getTotalPoint() + " gems");
 			takeTurn(player1, player2);
 			
 		}

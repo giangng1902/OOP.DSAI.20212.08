@@ -1,11 +1,6 @@
 package player;
 import java.util.*;
 
-import board.Board;
-import gem.SmallGem;
-import square.NormalSquare;
-import square.Squares;
-
 public class Player {
 	public int totalPoint;
 	public String name;

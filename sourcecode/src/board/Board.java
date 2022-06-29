@@ -1,8 +1,6 @@
 package board;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import gem.BigGem;
 import gem.SmallGem;
 import square.HalfCircle;

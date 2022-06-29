@@ -1,9 +1,7 @@
 package square;
 import java.util.*;
-import player.Player;
 import gem.*;
 public abstract class Squares {
-	private int point;
 	private int position;
 	public static final int MAX_POINTS = 60;
 	private ArrayList<Gem> square = new ArrayList<Gem>();
@@ -20,7 +18,7 @@ public abstract class Squares {
 	}
 
 	public int getPoint() {
-		int sum =0;
+		int sum = 0;
 		for (Gem gem:square) {
 			sum += gem.getPoint();
 		}
@@ -35,10 +33,12 @@ public abstract class Squares {
 			square.remove(0);
 		}
 	}
+	/*
 	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
-		if (Player.range.contains(getPosition()) && getPoint() > 0) {
+		if (Player.getRange().contains(getPosition()) && getPoint() > 0) {
 			return true;
 		}
 		return false;
 	}
+	*/
 }
