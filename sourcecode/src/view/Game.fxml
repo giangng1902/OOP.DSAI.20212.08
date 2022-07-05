@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../OneDrive%20-%20Hanoi%20University%20of%20Science%20and%20Technology/Pictures/OOP/286303084_630037947959910_7424756865158580055_n.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="square11" layoutX="149.0" layoutY="240.0" prefHeight="88.0" prefWidth="88.0" />
+      <Pane fx:id="square10" layoutX="243.0" layoutY="240.0" prefHeight="88.0" prefWidth="88.0" />
+      <Pane fx:id="square9" layoutX="340.0" layoutY="240.0" prefHeight="88.0" prefWidth="88.0" />
+      <Pane fx:id="square7" layoutX="530.0" layoutY="240.0" prefHeight="88.0" prefWidth="88.0" />
+      <Pane fx:id="square8" layoutX="435.0" layoutY="240.0" prefHeight="88.0" prefWidth="88.0" />
+      <Pane fx:id="square1" layoutX="149.0" layoutY="332.0" prefHeight="96.0" prefWidth="88.0" />
+      <Pane fx:id="square2" layoutX="243.0" layoutY="332.0" prefHeight="96.0" prefWidth="88.0" />
+      <Pane fx:id="square3" layoutX="340.0" layoutY="332.0" prefHeight="96.0" prefWidth="88.0" />
+      <Pane fx:id="square4" layoutX="435.0" layoutY="332.0" prefHeight="96.0" prefWidth="88.0" />
+      <Pane fx:id="square5" layoutX="530.0" layoutY="332.0" prefHeight="96.0" prefWidth="88.0" />
+      <Pane fx:id="halfcircle1" layoutX="70.0" layoutY="279.0" prefHeight="107.0" prefWidth="79.0" />
+      <Pane fx:id="halfcircle6" layoutX="624.0" layoutY="279.0" prefHeight="107.0" prefWidth="79.0" />
+   </children>
+</AnchorPane>
