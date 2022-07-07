@@ -67,6 +67,10 @@ public class Console {
 						
 						break;
 					}
+					else {
+						System.out.println("You get 0 gem!");
+						break;
+					}
 					
 				}
 				break;

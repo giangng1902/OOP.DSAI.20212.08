@@ -49,10 +49,11 @@ public class SquareController {
     		dirRight.setVisible(true);
     	}
     }
-
+    /*
     @FXML
     void leftClicked(MouseEvent event) {
     	dir = -1;
+    	System.out.println("aaaa");
     	dirLeft.setVisible(false);
     	dirRight.setVisible(false);
     }
@@ -63,7 +64,7 @@ public class SquareController {
     	dirLeft.setVisible(false);
     	dirRight.setVisible(false);	
     }
-    
+    */
 	public void initialize() {
 		
 		

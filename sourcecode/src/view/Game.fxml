@@ -14,19 +14,19 @@
             <Image url="@../../../../../../OneDrive%20-%20Hanoi%20University%20of%20Science%20and%20Technology/Pictures/OOP/drive-download-20220706T080849Z-001/Elemen_Game_32%20%5BConverted%5D-02.png" />
          </image>
       </ImageView>
-      <Label fx:id="name2" layoutX="194.0" layoutY="29.0" prefWidth="141.0" text="Name1" textFill="#3a7379">
+      <Label fx:id="name2" layoutX="185.0" layoutY="37.0" prefWidth="141.0" text="Name2" textFill="#3a7379">
          <font>
-            <Font size="25.0" />
+            <Font name="Leelawadee" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="name1" layoutX="475.0" layoutY="522.0" text="Name2">
+      <Label fx:id="name1" layoutX="484.0" layoutY="529.0" text="Name2">
          <font>
-            <Font size="25.0" />
+            <Font name="Leelawadee" size="25.0" />
          </font>
       </Label>
       <Pane fx:id="sq0" layoutX="42.0" layoutY="323.0" prefHeight="94.0" prefWidth="86.0" />
       <Pane fx:id="sq1" layoutX="134.0" layoutY="377.0" prefHeight="94.0" prefWidth="94.0" />
-      <Pane fx:id="sq2" layoutX="241.0" layoutY="377.0" prefHeight="94.0" prefWidth="94.0" />
+      <Pane fx:id="sq2" layoutX="234.0" layoutY="370.0" prefHeight="94.0" prefWidth="94.0" />
       <Pane fx:id="sq3" layoutX="337.0" layoutY="377.0" prefHeight="94.0" prefWidth="94.0" />
       <Pane fx:id="sq4" layoutX="437.0" layoutY="370.0" prefHeight="94.0" prefWidth="94.0" />
       <Pane fx:id="sq5" layoutX="541.0" layoutY="377.0" prefHeight="94.0" prefWidth="94.0" />
@@ -34,7 +34,7 @@
       <Pane fx:id="sq7" layoutX="541.0" layoutY="276.0" prefHeight="94.0" prefWidth="94.0" />
       <Pane fx:id="sq8" layoutX="437.0" layoutY="276.0" prefHeight="94.0" prefWidth="94.0" />
       <Pane fx:id="sq9" layoutX="337.0" layoutY="276.0" prefHeight="94.0" prefWidth="94.0" />
-      <Pane fx:id="sq10" layoutX="234.0" layoutY="269.0" prefHeight="94.0" prefWidth="94.0" />
+      <Pane fx:id="sq10" layoutX="234.0" layoutY="276.0" prefHeight="94.0" prefWidth="94.0" />
       <Pane fx:id="sq11" layoutX="134.0" layoutY="276.0" prefHeight="94.0" prefWidth="94.0" />
       <Label fx:id="score2" layoutX="457.0" layoutY="119.0" text="60" textFill="#f0ebe3">
          <font>
