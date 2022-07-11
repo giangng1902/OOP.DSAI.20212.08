@@ -1,4 +1,4 @@
-package screen;
+package GUI;
 
 
 import java.io.IOException;
@@ -10,18 +10,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import player.Player;
 
 public class Square extends Application {
 	private static Board board;
 	private static int point;
 	private static int position;
+	private static Player playingPlayer;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			final String SQUARE_FILE_PATH = "/view/Square.fxml";
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(SQUARE_FILE_PATH));
-			SquareController squareController = new SquareController(board, position);
+			SquareController squareController = new SquareController(board, position, playingPlayer);
 			fxmlLoader.setController(squareController);
 			Parent root;
 			root = fxmlLoader.load();

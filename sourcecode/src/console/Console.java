@@ -34,7 +34,6 @@ public class Console {
 		
 		while(true) {
 			if(board.getSquare(position).getPoint() > 0) {
-				int takenPoint = 0;
 				int curPosition = position;
 				int phasePoint = board.getSquare(position).getPoint();	 // number of gems in chosen square
 				aPhase(board, playingPlayer, position, direction);
@@ -190,7 +189,7 @@ public class Console {
 		
 		Scanner keyboard = new Scanner(System.in);
 		
-		// khoi tao nguoi choi
+		// Players initialization
 		System.out.println("Enter the first player's name: ");
 		String name1 = keyboard.next();
 		Player1 player1 = new Player1(name1);
@@ -199,11 +198,11 @@ public class Console {
 		String name2 = keyboard.next();
 		Player2 player2 = new Player2(name2);
 		
-		// Initialize who plays first
+		// who plays first
 		playingPlayer = player1;
 		board.print();
 		
-		// Start gem
+		// Start game
 		while (stopGame(board) == false) {
 			
 			if (checkNeedRefill(board, playingPlayer) == true) {

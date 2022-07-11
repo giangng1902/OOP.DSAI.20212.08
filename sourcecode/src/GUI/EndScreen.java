@@ -1,31 +1,31 @@
-package screen;
+package GUI;
 
 import java.io.IOException;
 
 import board.Board;
-import controller.GameController;
-import controller.SquareController;
+import controller.EndScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import player.Player;
 import player.Player1;
 import player.Player2;
 
-public class Game extends Application {
-	private static Board board;
+public class EndScreen extends Application {
 	private static Player1 player1;
 	private static Player2 player2;
+	private static Board board;
+	private static Player playingPlayer;
 	
-
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			final String FILE_PATH = "/view/Game.fxml";
+			final String FILE_PATH = "/view/EndScreen.fxml";
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FILE_PATH));
-			GameController gameController = new GameController(board, player1, player2);
-			fxmlLoader.setController(gameController);
+			EndScreenController endController = new EndScreenController(board, player1, player2, playingPlayer);
+			fxmlLoader.setController(endController);
 			Parent root;
 			root = fxmlLoader.load();
 			primaryStage.setTitle(null);
@@ -38,9 +38,11 @@ public class Game extends Application {
 	}
 
 	public static void main(String[] args) {
-		board  = new Board();
-		player1 = new Player1("giang1");
-		player2 = new Player2("giang2");
+		player1 = new Player1("aaa");
+		player2 = new Player2("bbb");
+		board = new Board();
+		playingPlayer = player1;
+		
 		launch(args);
 	}
 }

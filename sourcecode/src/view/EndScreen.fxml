@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="768.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Image/PLAYER.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="274.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnRestart" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Image/Asset%208.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="274.0" layoutY="592.0" mnemonicParsing="false" onAction="#btnQuit" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Image/Asset%201%20(2).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="wonPlayer" layoutX="132.0" layoutY="244.0" text="Giang" textFill="#470e04">
+         <font>
+            <Font name="Castellar" size="50.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

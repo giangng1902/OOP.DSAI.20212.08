@@ -1,22 +1,25 @@
 package controller;
 
 import board.Board;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import player.Player;
 
 public class SquareController {
 	private Board board;
 	private int point;
 	private int position;
-	private int dir;
-    
-    public SquareController(Board board, int position) {
+    static Player playingPlayer;
+    public SquareController(Board board, int position, Player playingPlayer) {
     	this.board = board;
     	this.position = position;
+    	SquareController.playingPlayer = playingPlayer;
     }
     
     public int getPoint() {
@@ -28,43 +31,10 @@ public class SquareController {
 
 
     @FXML
-    private ImageView dirLeft;
-
-    @FXML
     private ImageView imgGem;
+    
+    public static Label static_pnt; 
 
-    @FXML
-    private ImageView dirRight;
-
-    @FXML
-    void chooseSquClicked(MouseEvent event) {
-    	if (position == 0 || position == 6) {
-        	Alert alert = new Alert(AlertType.INFORMATION);
-        	alert.setTitle("Notification");
-        	alert.setHeaderText(null);
-        	alert.setContentText("Cannot not choose this square!");
-    	}
-    	else {
-    		dirLeft.setVisible(true);
-    		dirRight.setVisible(true);
-    	}
-    }
-    /*
-    @FXML
-    void leftClicked(MouseEvent event) {
-    	dir = -1;
-    	System.out.println("aaaa");
-    	dirLeft.setVisible(false);
-    	dirRight.setVisible(false);
-    }
-
-    @FXML
-    void rightClicked(MouseEvent event) {
-    	dir = 1;
-    	dirLeft.setVisible(false);
-    	dirRight.setVisible(false);	
-    }
-    */
 	public void initialize() {
 		
 		
@@ -76,7 +46,5 @@ public class SquareController {
 		pnt.setText(Integer.toString(getPoint()));
 		pnt.setVisible(true);
 		
-    	dirLeft.setVisible(false);
-    	dirRight.setVisible(false);
 	}
 }

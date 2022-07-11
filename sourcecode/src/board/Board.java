@@ -63,26 +63,7 @@ public class Board {
 		}
 		return board.get(position);
 	}
-	/*
-	public NormalSquare getNormalSquare(int position) {
-		while (position < 0) {
-			position += 12;
-		}
-		while (position >= 12) {
-			position -= 12;
-		}
-		return (NormalSquare)board.get(position);
-	}	
-	public HalfCircle getHalfCircle(int position) {
-		while (position < 0) {
-			position += 12;
-		}
-		while (position >= 12) {
-			position -= 12;
-		}
-		return (HalfCircle)board.get(position);
-	}	
-	*/
+
 	public void print() {
 		System.out.println("===================");
 		for (Squares square: board) {

@@ -33,12 +33,4 @@ public abstract class Squares {
 			square.remove(0);
 		}
 	}
-	/*
-	public boolean canBeChosen() { // check dieu kien chon o, o co the chon tra ve true
-		if (Player.getRange().contains(getPosition()) && getPoint() > 0) {
-			return true;
-		}
-		return false;
-	}
-	*/
 }

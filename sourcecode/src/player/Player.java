@@ -22,6 +22,7 @@ public class Player {
 	public List<Integer> getRange() {
 		return range;
 	}
+	
 	public int getDirection() {
 		return this.direction;
 	}
