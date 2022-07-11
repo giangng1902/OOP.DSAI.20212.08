@@ -33,7 +33,7 @@ public class EndScreenController {
     
     @FXML
     void btnQuit(ActionEvent event) {
-    	
+    	System.exit(0);
     }
 
     @FXML
@@ -61,7 +61,7 @@ public class EndScreenController {
     
     public void initialize() {
     	Player wonplayer;
-    	if (player1.totalPoint > player2.totalPoint) {
+    	if (player1.getTotalPoint() > player2.getTotalPoint()) {
     		wonplayer = player1;
     	} else {
     		wonplayer = player2;

@@ -13,13 +13,14 @@ public class Console {
 	public static void aPhase(Board board,Player playingPlayer, int position, int direction) {
 		// 
 		SmallGem gem = new SmallGem();
-		playingPlayer.pointInHand = board.getSquare(position).getPoint();
+		playingPlayer.setPointInHand(board.getSquare(position).getPoint());
 		board.getSquare(position).removeGem();
 		int curPosition = position;
-		while (playingPlayer.pointInHand > 0) {
+		while (playingPlayer.getPointInHand() > 0) {
 			curPosition += direction;
 			board.getSquare(curPosition).addGem(gem);
-			playingPlayer.pointInHand -= 1;
+			playingPlayer.setPointInHand(playingPlayer.getPointInHand() - 1);
+			//playingPlayer.pointInHand -= 1;
 		}
 	}
 	
@@ -115,7 +116,7 @@ public class Console {
 	public static boolean stopTurn(Squares curSquare, int direction) { // kiểm tra điều kiện dừng lại một lượt chơi
 		int curPosition = curSquare.getPosition();
 		int nextPosition = curPosition + direction;
-		if (playingPlayer.pointInHand == 0 && board.getSquare(nextPosition).getPoint() == 0) {
+		if (playingPlayer.getPointInHand() == 0 && board.getSquare(nextPosition).getPoint() == 0) {
 			return true;
 		}
 		return false;

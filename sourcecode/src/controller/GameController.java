@@ -245,14 +245,15 @@ public class GameController{
     
     public static void aPhase(Board board,Player playingPlayer, int position, int direction) {
 		// 
-		SmallGem gem = new SmallGem();
-		playingPlayer.pointInHand = board.getSquare(position).getPoint();
+    	SmallGem gem = new SmallGem();
+		playingPlayer.setPointInHand(board.getSquare(position).getPoint());
 		board.getSquare(position).removeGem();
 		int curPosition = position;
-		while (playingPlayer.pointInHand > 0) {
+		while (playingPlayer.getPointInHand() > 0) {
 			curPosition += direction;
 			board.getSquare(curPosition).addGem(gem);
-			playingPlayer.pointInHand -= 1;
+			playingPlayer.setPointInHand(playingPlayer.getPointInHand() - 1);
+			//playingPlayer.pointInHand -= 1;
 		}
 	}
     

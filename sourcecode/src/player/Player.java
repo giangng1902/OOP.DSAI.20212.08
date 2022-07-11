@@ -2,11 +2,11 @@ package player;
 import java.util.*;
 
 public class Player {
-	public int totalPoint;
-	public String name;
+	private int totalPoint;
+	private String name;
 	private int direction; // 1: counterclockwise, -1: clockwise
 	private static List<Integer> range = new ArrayList<Integer>();
-	public int pointInHand = 0;
+	private int pointInHand = 0;
 	
 	public Player(String name) {
 		this.totalPoint = 0;
@@ -40,4 +40,11 @@ public class Player {
 		String infor = getName();
 		return infor;
 	}
+	public int getPointInHand() {
+		return pointInHand;
+	}
+	public void setPointInHand(int pointInHand) {
+		this.pointInHand = pointInHand;
+	}
+	
 }
