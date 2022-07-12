@@ -40,8 +40,8 @@ public class Game extends Application {
 
 	public static void main(String[] args) {
 		board  = new Board();
-		player1 = new Player1("rei1");
-		player2 = new Player2("rei2");
+		player1 = new Player1("player1");
+		player2 = new Player2("player2");
 		playingPlayer = player1;
 		
 		launch(args);

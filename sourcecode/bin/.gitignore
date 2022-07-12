@@ -1,5 +1,6 @@
-/view/
-/controller/
 /GUI/
-/player/
+/board/
 /console/
+/controller/
+/gem/
+/view/
