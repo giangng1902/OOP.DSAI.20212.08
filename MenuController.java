@@ -51,8 +51,7 @@ public class MenuController {
 			fxmlLoader.setController(gameController);
 			Parent root;
 			root = fxmlLoader.load();
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    		
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();   		
     		stage.setScene(new Scene(root));
     		stage.setTitle(null);
     		stage.show();
@@ -64,11 +63,45 @@ public class MenuController {
     }
 	@FXML
 	void switch_Rule(ActionEvent event)throws IOException{
-		Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("RULE!");
-    	alert.setHeaderText(null);
-    	alert.setContentText("SELECT 1 SQUARE THEN SELECT DIRECTION");
-    	alert.showAndWait();
+		try {
+			final String FILE_PATH = "/view/RuleScreen.fxml";
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FILE_PATH));
+			player1 = new Player1(player1.getName());
+			player2 = new Player2(player2.getName());
+			playingPlayer = player1;
+			RuleController ruleController = new RuleController(board, player1, player2, playingPlayer);
+			fxmlLoader.setController(ruleController);
+			Parent root;
+			root = fxmlLoader.load();
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    		
+    		stage.setScene(new Scene(root));
+    		stage.setTitle(null);
+    		stage.show();
+    		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
+	
+	@FXML
+	void quit_menu(ActionEvent event){
+		try {
+			final String FILE_PATH = "/view/Game.fxml";
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FILE_PATH));
+			player1 = new Player1(player1.getName());
+			player2 = new Player2(player2.getName());
+			GameController gameController = new GameController(new Board(), player1, player2, playingPlayer);
+			fxmlLoader.setController(gameController);
+			Parent root;
+			root = fxmlLoader.load();
+			playingPlayer = player1;
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.close();
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-  }
+  }}

@@ -1,10 +1,10 @@
 package GUI;
-
 import java.io.IOException;
 
 import board.Board;
 import controller.EndScreenController;
 import controller.MenuController;
+import controller.RuleController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ import player.Player;
 import player.Player1;
 import player.Player2;
 
-public class MenuScreen extends Application {
+public class RuleScreen extends Application {
 	private static Player1 player1;
 	private static Player2 player2;
 	private static Board board;
@@ -23,10 +23,10 @@ public class MenuScreen extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			final String FILE_PATH = "/view/MenuScreen.fxml";
+			final String FILE_PATH = "/view/RuleScreen.fxml";
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FILE_PATH));
-			MenuController menuController = new MenuController(board, player1, player2, playingPlayer);
-			fxmlLoader.setController(menuController);
+			RuleController ruleController = new RuleController(board, player1, player2, playingPlayer);
+			fxmlLoader.setController(ruleController);
 			Parent root;
 			root = fxmlLoader.load();
 			primaryStage.setTitle(null);
