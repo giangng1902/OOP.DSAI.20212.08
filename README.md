@@ -9,5 +9,6 @@ Nguyen Huu Tuan Duy 20204907:
 
 Duong Tung Giang 20204908:
 
-#Link demo video of application: https://drive.google.com/file/d/1PqRZwE5vSQ6LEqfZ9sP4IwaDDe9vuHEp/view?usp=sharing
+# Link demo video of application: 
+https://drive.google.com/file/d/1PqRZwE5vSQ6LEqfZ9sP4IwaDDe9vuHEp/view?usp=sharing
 
