@@ -1,5 +1,5 @@
 # OOP.DSAI.20212.08
-# Members' information and assignment
+# Members' information and assignments
 
 Nguyen Thi Huong Giang 20200185: Class Player, Board, Square, Console (half), GUI GameScreen&EndScreen 
 
